@@ -1,0 +1,29 @@
+#footer {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(
+    to right,
+    #5fbfeb 0%,
+    #53c8e8 51%,
+    #5ce5f4 100%
+  );
+}
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.textPart {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: flex-start;
+  padding-left: 30px;
+}
+.socialMedia {
+  display: flex;
+  font-size: 30px;
+  gap: 20px;
+  color: #040d3e;
+  align-items: center;
+}

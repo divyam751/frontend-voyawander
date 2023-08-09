@@ -1,0 +1,81 @@
+#holidays {
+  background-size: cover;
+  padding-top: 6%;
+}
+#text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 40px;
+}
+#holidaysContainer {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 50px;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  width: 30%;
+  padding: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 20px;
+}
+.bookingBox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.priceBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  padding-bottom: 20px;
+}
+#starts {
+  font-size: small;
+  margin-top: -20px;
+}
+#price {
+  margin-top: -20px;
+  padding-left: 2px;
+  font-size: m;
+}
+#btn {
+  width: 100px;
+  border-radius: 40px;
+  color: white;
+  background-image: linear-gradient(
+    to right,
+    #00adfd 0%,
+    #00c6fe 51%,
+    #00e3fe 100%
+  );
+}
+
+@media only Screen and (max-width: 1020px) {
+  #holidaysContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  .box {
+    width: 40%;
+  }
+}
+@media only Screen and (max-width: 720px) {
+  .box {
+    width: 60%;
+  }
+}
+@media only Screen and (max-width: 450px) {
+  .box {
+    width: 80%;
+  }
+}

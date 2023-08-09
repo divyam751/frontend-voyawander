@@ -1,0 +1,21 @@
+#hotels {
+  padding-top: 50px;
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.aboutContainer {
+  display: flex;
+  justify-content: space-around;
+}
+#text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 40px;
+  width: 95%;
+}
