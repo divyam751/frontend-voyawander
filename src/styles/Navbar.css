@@ -4,12 +4,15 @@ nav {
   display: flex;
   justify-content: space-between;
   background-color: transparent;
-  color: Black;
+  /* background-color: #e3f5ff; */
+  color: black;
   font-family: "Belanosima", sans-serif;
   position: fixed;
+  z-index: 1;
   width: 100%;
   padding: 10px 5% 0px 5%;
-  height: 72px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  height: 60px;
 }
 #logo {
   font-family: "Mochiy Pop P One", sans-serif;
@@ -85,5 +88,10 @@ a {
   }
   .v-class-resp {
     opacity: 1;
+    pointer-events: auto;
   }
+  /* .v-class-resp:not(.h-nav-resp) {
+    opacity: 0;
+    pointer-events: none;
+  } */
 }

@@ -1,0 +1,227 @@
+/* Structure */
+#flightCardsBody {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+#FlightContianer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: 200px;
+  width: 100%;
+}
+#Section1 {
+  display: flex;
+  align-items: center;
+  height: 22%;
+  width: 100%;
+  border-bottom: 1px solid rgb(195, 195, 195);
+  /* border-top: 1px solid rgb(195, 195, 195); */
+  gap: 10px;
+}
+#SectionLeft {
+  display: flex;
+  align-items: center;
+  background-color: #fde5e5;
+  height: 100%;
+  width: 90%;
+  padding-left: 15px;
+  gap: 10px;
+}
+
+#Section2 {
+  display: flex;
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+  height: 60%;
+  width: 94%;
+  border-bottom: 1px solid rgb(195, 195, 195);
+  padding-left: 15px;
+  gap: 10px;
+}
+#Section3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20%;
+  width: 94%;
+  padding-left: 15px;
+  gap: 10px;
+}
+
+/*  Section 1 */
+#Deal {
+  height: 30px;
+  width: 60px;
+  font-size: small;
+}
+
+/* Section 2 */
+#Devider1 {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  justify-content: space-between;
+  padding-right: 7%;
+}
+#FlightDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+#FlightLogo {
+  height: 50px;
+  width: 50px;
+}
+#FlightName {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+#FlightName :nth-child(2) {
+  color: gray;
+  font-size: small;
+}
+
+#TimeSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#Line {
+  width: 80px;
+  height: 3px;
+  margin: 20px;
+  background-color: rgb(195, 195, 195);
+}
+#TimeBox :first-child {
+  font-weight: bold;
+}
+#TimeBox :last-child {
+  font-size: small;
+}
+
+#Devider2 {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  border-left: 2px solid rgb(195, 195, 195);
+  justify-content: space-between;
+  padding: 0 30px 0 30px;
+}
+#TotalTime :first-child {
+  font-weight: bold;
+}
+#TotalTime :last-child {
+  font-size: small;
+}
+#FlightPrice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+#FlightPrice :first-child {
+  font-weight: bold;
+  font-size: 27px;
+}
+
+/* Section 3 */
+#FlightFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#MealSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px 0 10px;
+  border-right: 2px solid rgba(107, 106, 106, 0.747);
+}
+#Emissions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px 0 10px;
+}
+
+@media only Screen and (max-width: 1020px) {
+  #flightCardsBody {
+    padding-top: 100px;
+    display: flex;
+    padding-left: 25px;
+    gap: 40px;
+    width: 100%;
+  }
+  #FlightContianer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 400px;
+    width: 90%;
+  }
+  #Section2 {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    height: 60%;
+    width: 94%;
+    border-bottom: 1px solid rgb(195, 195, 195);
+    z-index: 0;
+    gap: 40px;
+  }
+  #Devider1 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+    padding-right: 7%;
+  }
+  #Devider2 {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    border-left: 2px solid white;
+    justify-content: space-evenly;
+    padding: 0px;
+  }
+}
+@media only Screen and (max-width: 540px) {
+  #flightCardsBody {
+    font-size: 10px;
+  }
+  #FlightLogo {
+    width: 30px;
+    height: 30px;
+  }
+  #FlightPrice {
+    flex-direction: column;
+  }
+  #Line {
+    width: 40px;
+  }
+  #Devider1 {
+    width: 100%;
+  }
+
+  #Devider2 {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+}

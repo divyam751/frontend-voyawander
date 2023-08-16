@@ -2,16 +2,23 @@ import { Button, Heading } from "@chakra-ui/react";
 import React from "react";
 import "../styles/Holidays.css";
 
-const Holidays = () => {
+const Holidays = ({ setShowPlaces }) => {
+  const handleExplore = () => {
+    setShowPlaces(true);
+  };
   return (
     <div id='holidays'>
       <div id='text'>
         <Heading>Find Popular Destinations</Heading>
+
         <text>
           Escape the ordinary and explore the extraordinary - with our
           handpicked selection of destinatations and travel deails. you will be
           able to create the trip of your dreams.
         </text>
+        <Button id='Explore' onClick={handleExplore}>
+          Explore More
+        </Button>
       </div>
       <div id='holidaysContainer'>
         <div class='box'>

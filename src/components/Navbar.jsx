@@ -4,7 +4,7 @@ import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 
-const Navbar = () => {
+const Navbar = ({ setShowPlaces }) => {
   const [close, setClose] = useState(true);
   const [visible, setVisible] = useState("");
   const [height, setHight] = useState("");
@@ -18,6 +18,9 @@ const Navbar = () => {
       setVisible("");
     }
     setClose(!close);
+  };
+  const handleClick = () => {
+    setShowPlaces(false);
   };
   return (
     <Box>
@@ -37,7 +40,9 @@ const Navbar = () => {
             <a href='#flights'>Flights</a>
           </li>
           <li>
-            <a href='#holidays'>Holidays</a>
+            <a href='#holidays' onClick={handleClick}>
+              Holidays
+            </a>
           </li>
           <li>
             <a href='#contact'>Contact Us</a>

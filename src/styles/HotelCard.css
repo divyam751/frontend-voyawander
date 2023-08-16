@@ -1,0 +1,174 @@
+#HotelCardBody {
+  padding-top: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding-left: 10%;
+  background-color: rgb(220, 236, 241);
+}
+#HotelContainer {
+  display: flex;
+  width: 90%;
+  height: 350px;
+  /* border: 2px solid blue; */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: white;
+}
+/* Left Box */
+#LeftHotelBox {
+  width: 25%;
+  /* border: 2px dashed black; */
+}
+#LeftHotelBox > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+
+/* Middle Box */
+
+#MiddleHotelBox {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 10px;
+  padding-right: 20px;
+}
+#HotelRatings {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 20px 0 10px 0;
+}
+#HotelStars {
+  display: flex;
+  align-items: center;
+}
+#star {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  color: gold;
+  padding: 0;
+}
+#star > span {
+  display: flex;
+  padding: 1px;
+}
+#HotelRatingTag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+#HotelName {
+  font-weight: bold;
+  font-size: larger;
+  padding-bottom: 10px;
+}
+#HotelLocation {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+#MiddleHotelBoxTop {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 20px;
+}
+#MiddleHotelBoxBtm {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  padding-bottom: 5px;
+}
+/* Right BOX */
+
+#RightHotelBox {
+  width: 25%;
+  border-left: 2px solid lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  gap: 2px;
+}
+#HotelPrice {
+  font-size: 40px;
+  font-weight: bold;
+}
+#BreakFastSection {
+  display: flex;
+  justify-content: flex-end;
+  color: green;
+  gap: 2px;
+}
+
+/* Responsive */
+@media only Screen and (max-width: 1150px) {
+  #BreakFastSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    color: green;
+    gap: 2px;
+  }
+}
+@media only Screen and (max-width: 900px) {
+  #HotelCardBody {
+    font-size: 13px;
+  }
+}
+@media only Screen and (max-width: 600px) {
+  #HotelContainer {
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+  }
+  #LeftHotelBox {
+    width: 300px;
+    height: 300px;
+    /* border: 2px dashed black; */
+  }
+  #LeftHotelBox > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+  }
+  #MiddleHotelBox {
+    width: 90%;
+    align-items: center;
+  }
+  #RightHotelBox {
+    width: 100%;
+    border-left: 0;
+    border-top: 2px solid lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 4px;
+  }
+  #BreakFastSection {
+    display: flex;
+    flex-direction: row;
+    color: green;
+    gap: 2px;
+  }
+}
