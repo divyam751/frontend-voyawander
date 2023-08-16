@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import _debounce from "lodash/debounce";
 import {
-  Box,
   Button,
   Flex,
   Heading,
@@ -10,15 +9,16 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  Text,
 } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
 import "../styles/Places.css";
+import { useNavigate } from "react-router-dom";
 
 const Place = () => {
   const [placesData, setPlacesData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
+  const navigate = useNavigate();
   const debouncedSearch = _debounce((value) => {
     // Fetch data using Axios with search parameter
     axios
@@ -48,6 +48,12 @@ const Place = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
+
+  const handleBook = (place) => {
+    const userData = JSON.stringify(place);
+    localStorage.setItem("currentData", userData);
+    navigate("/hotels");
+  };
 
   return (
     <div className='mainBody'>
@@ -80,7 +86,14 @@ const Place = () => {
                   <span id='starts'>Starts from</span>
                   <span id='price'>${place.price} / person</span>
                 </div>
-                <Button id='btn'>Book</Button>
+                <Button
+                  id='btn'
+                  onClick={() => {
+                    handleBook(place);
+                  }}
+                >
+                  Book
+                </Button>
               </div>
             </div>
           </div>

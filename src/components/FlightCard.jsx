@@ -3,8 +3,11 @@ import "../styles/FlightCard.css";
 import { Button } from "@chakra-ui/react";
 import { ImSpoonKnife } from "react-icons/im";
 import axios from "axios";
+import { isEmpty } from "lodash";
+import { useNavigate } from "react-router-dom";
 const FlightCard = () => {
   const [flightData, setFlightData] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     axios
       .get("http://localhost:8080/FlightData")
@@ -15,7 +18,20 @@ const FlightCard = () => {
         console.log(error);
       });
   }, []);
-  console.log(flightData);
+  // console.log(flightData);
+
+  const localData = JSON.parse(localStorage.getItem("currentData")) || [];
+  if (!isEmpty(localData.placeName)) {
+    let parts = localData.placeName.split(" ");
+    var Country = parts[1];
+  }
+
+  const handleBookNow = (flight) => {
+    const combinedData = { ...localData, ...flight };
+    localStorage.setItem("currentData", JSON.stringify(combinedData));
+    navigate("/signup");
+  };
+
   return (
     <div id='flightCardsBody'>
       Available Flights
@@ -54,7 +70,7 @@ const FlightCard = () => {
                     <div id='Line'></div>
                     <div id='TimeBox'>
                       <p>{flight.ArrivalTime}</p>
-                      <p>Mumbai</p>
+                      <p>{Country}</p>
                     </div>
                   </div>
                 </div>
@@ -65,7 +81,13 @@ const FlightCard = () => {
                   </div>
                   <div id='FlightPrice'>
                     <p>$ {flight.FlightPrice}</p>
-                    <Button colorScheme='red' variant='outline'>
+                    <Button
+                      colorScheme='red'
+                      variant='outline'
+                      onClick={() => {
+                        handleBookNow(flight);
+                      }}
+                    >
                       Book Now
                     </Button>
                   </div>

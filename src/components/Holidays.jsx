@@ -1,11 +1,9 @@
 import { Button, Heading } from "@chakra-ui/react";
 import React from "react";
 import "../styles/Holidays.css";
+import { Link } from "react-router-dom";
 
-const Holidays = ({ setShowPlaces }) => {
-  const handleExplore = () => {
-    setShowPlaces(true);
-  };
+const Holidays = () => {
   return (
     <div id='holidays'>
       <div id='text'>
@@ -16,8 +14,8 @@ const Holidays = ({ setShowPlaces }) => {
           handpicked selection of destinatations and travel deails. you will be
           able to create the trip of your dreams.
         </text>
-        <Button id='Explore' onClick={handleExplore}>
-          Explore More
+        <Button id='Explore'>
+          <Link to='/destinations'>Explore More </Link>
         </Button>
       </div>
       <div id='holidaysContainer'>

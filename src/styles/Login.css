@@ -1,0 +1,109 @@
+#LoginBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  height: 100vh;
+  border: 2px solid;
+  /* background-color: rgb(159, 237, 87); */
+}
+#LoginContainer {
+  width: 70%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  /* border: 2px solid green; */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 20px;
+}
+#LoginLeftBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 2px solid #0099ff; */
+  height: 100%;
+  width: 50%;
+  background-color: white;
+  border-radius: 20px 0 0 20px;
+}
+#imgContainer {
+  height: 70%;
+}
+
+#LoginRightBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* border-left: 2px solid rgb(198, 196, 196); */
+  border-left: 2px solid #0099ff;
+  /* border-bottom: 2px solid #0099ff; */
+  height: 100%;
+  width: 50%;
+  background-color: white;
+  border-radius: 0 20px 20px 0;
+}
+#svg {
+  border-radius: 0 20px;
+}
+#svg2 {
+  border-radius: 20px 0;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+#submit {
+  background-color: royalblue;
+  color: white;
+}
+#para {
+  padding-top: 10px;
+}
+
+@media only Screen and (max-width: 1000px) {
+  #LoginContainer {
+    width: 80%;
+  }
+}
+@media only Screen and (max-width: 840px) {
+  #LoginContainer {
+    width: 90%;
+  }
+}
+@media only Screen and (max-width: 700px) {
+  #LoginContainer {
+    width: 100%;
+  }
+}
+@media only Screen and (max-width: 550px) {
+  #LoginContainer {
+    flex-direction: column;
+    width: 70%;
+  }
+  #LoginLeftBox {
+    height: 0px;
+    width: 0px;
+  }
+  #LoginRightBox {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-radius: 20px;
+  }
+  #svg {
+    border-radius: 20px;
+  }
+  #svg2 {
+    border-radius: 20px;
+  }
+}
+@media only Screen and (max-width: 450px) {
+  #LoginContainer {
+    width: 90%;
+  }
+}

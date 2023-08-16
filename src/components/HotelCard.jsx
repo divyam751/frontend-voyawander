@@ -5,9 +5,12 @@ import { RiStarSFill } from "react-icons/ri";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { BsCupHotFill } from "react-icons/bs";
 import axios from "axios";
+import { isEmpty } from "lodash";
+import { useNavigate } from "react-router-dom";
 
 const HotelCard = () => {
   const [hotelData, setHotelData] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     axios
       .get("http://localhost:8080/HotelsData")
@@ -19,7 +22,19 @@ const HotelCard = () => {
       });
   }, []);
 
-  // console.log(hotelData);
+  const localData = JSON.parse(localStorage.getItem("currentData")) || [];
+  // console.log(localData.placeName);
+  if (!isEmpty(localData.placeName)) {
+    let parts = localData.placeName.split(" ");
+    var Country = parts[1];
+  }
+
+  const handleBookNow = (hotel) => {
+    const combinedData = { ...localData, ...hotel };
+    localStorage.setItem("currentData", JSON.stringify(combinedData));
+    navigate("/flights");
+  };
+
   return (
     <div id='HotelCardBody'>
       Available Hotels
@@ -59,7 +74,7 @@ const HotelCard = () => {
                   </div>
                   <div id='HotelLocation'>
                     <FaMapMarkerAlt />
-                    <p>Anmod</p>
+                    <p>{Country}</p>
                   </div>
                   <p>{hotel.HotelLocation}</p>
                 </div>
@@ -78,7 +93,14 @@ const HotelCard = () => {
                   <BsCupHotFill />
                   <p>INCL OF FREE BREAKFAST</p>
                 </div>
-                <Button colorScheme='whatsapp'>Book Now</Button>
+                <Button
+                  colorScheme='whatsapp'
+                  onClick={() => {
+                    handleBookNow(hotel);
+                  }}
+                >
+                  Book Now
+                </Button>
               </div>
             </div>
           </div>
