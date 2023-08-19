@@ -44,6 +44,9 @@ const Login = () => {
             isClosable: true,
             position: "top",
           });
+          setTimeout(() => {
+            navigate("/booking");
+          }, 5000);
         } else if (res.status === 401) {
           toast({
             title: "Login Failed",

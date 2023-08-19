@@ -1,143 +1,143 @@
 import React, { useState } from "react";
+import "../styles/Payment.css";
 import {
-  Box,
-  Center,
-  FormControl,
-  FormLabel,
-  Input,
   Button,
-  Flex,
+  Heading,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
   useToast,
 } from "@chakra-ui/react";
-import Card from "../Images/card.png";
-
+import { AiOutlineMail } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 const Payment = () => {
+  const [show, setShow] = React.useState(false);
+  const [cardNumber, setCardNumber] = useState("");
+  const [ExpirationDate, setExpirationDate] = useState("");
+  const [cvv, setCvv] = useState("");
+  const [cardHolderName, setcardHolderName] = useState("");
+  const handleClick = () => setShow(!show);
   const toast = useToast();
-  const [formData, setFormData] = useState({
-    cardNumber: "",
-    expirationDate: "",
-    cvv: "",
-    name: "",
-  });
+  const navigate = useNavigate();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const payload = {
+      cardHolderName,
+      cardNumber,
+      ExpirationDate,
+      cvv,
+    };
+    // console.log(payload);
+    fetch("http://localhost:8000/Payment", {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          toast({
+            title: "Payment Submitted",
+            description: "Please wait for confirmation!",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+            position: "top",
+          });
+          setTimeout(() => {
+            navigate("/success");
+          }, 5000);
+        } else if (res.status === 401) {
+          toast({
+            title: "Payment Failed",
+            description: "Invalid credentials. Please try again.",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+            position: "top",
+          });
+        }
+      })
+
+      .then((err) => console.log(err));
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (
-      formData.cardNumber === "1111 2222 3333 4444" &&
-      formData.expirationDate === "07/25" &&
-      formData.cvv === "123" &&
-      formData.name === "DIVYAM CHAUHAN"
-    ) {
-      const success = () => {
-        toast({
-          title: "Details Submitted.",
-          description: "Please wait for Confirmation",
-          status: "success",
-          duration: 4000,
-          isClosable: true,
-        });
-      };
-      success();
-      window.location.href = "/success";
-    } else {
-      console.log("not working");
-    }
-  };
-
   return (
-    <Box bgColor={"#cceaf7"} marginTop={-40}>
-      <Box bgColor={"#29335c"} h={160}></Box>
-      <Flex justifyContent={"center"} pt={20}>
-        <img src={Card} alt='' />
-      </Flex>
-      <Flex
-        fontSize={40}
-        color={"gray.300"}
-        fontWeight={""}
-        mt={-180}
-        pl='32%'
-        pb={30}
-      >
-        {formData.cardNumber}
-      </Flex>
-      <Flex fontSize={25} color={"gray.300"} fontWeight={""} mt={-15} pl='37%'>
-        <Box pr={20}> {formData.expirationDate !== "" ? "07/23" : " "} </Box>{" "}
-        <Box pl={5}>{formData.expirationDate}</Box>
-      </Flex>
-      <Flex fontSize={25} color={"gray.300"} fontWeight={""} pl='36%'>
-        <Box pl={5}>{formData.name}</Box>
-      </Flex>
-
-      <Center>
-        <Box
-          bg='gray.200'
-          p={8}
-          borderRadius='lg'
-          boxShadow='lg'
-          width='400px'
-          mt={170}
-          mb={20}
-        >
+    <div id='PaymentBody'>
+      <div id='PaymentContainer'>
+        <div id='PaymentLeftBox'>
+          <div id='imgContainer'>
+            <img
+              src='https://cdn.dribbble.com/users/1523313/screenshots/13591454/media/b5c05bf8f1512759f199bdf613995297.gif'
+              alt=''
+            />
+          </div>
+        </div>
+        <div id='PaymentRightBox'>
+          <svg
+            id='svg'
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 1440 320'
+          >
+            <path
+              fill='#0099ff'
+              fill-opacity='1'
+              d='M0,64L40,96C80,128,160,192,240,192C320,192,400,128,480,122.7C560,117,640,171,720,181.3C800,192,880,160,960,170.7C1040,181,1120,235,1200,224C1280,213,1360,139,1400,101.3L1440,64L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z'
+            ></path>
+          </svg>
+          <Heading id='Heading'>Payment Page</Heading>
+          <p id='para'>
+            Securely complete your purchase and make a payment with our trusted
+            payment gateway ✌️
+          </p>
           <form onSubmit={handleSubmit}>
-            <FormControl>
-              <FormLabel>Card Number</FormLabel>
+            <InputGroup>
+              <Input
+                type='number'
+                placeholder='Card Number'
+                value={cardNumber}
+                onChange={(e) => setCardNumber(e.target.value)}
+              />
+            </InputGroup>
+            <InputGroup>
               <Input
                 type='text'
-                name='cardNumber'
-                value={formData.cardNumber}
-                onChange={handleChange}
+                placeholder='Expiration Date '
+                value={ExpirationDate}
+                onChange={(e) => setExpirationDate(e.target.value)}
               />
-            </FormControl>
-
-            <FormControl>
-              <FormLabel>Expiration Date</FormLabel>
+            </InputGroup>
+            <InputGroup size='md'>
+              <Input
+                pr='4.5rem'
+                type={show ? "text" : "password"}
+                placeholder='Enter CVV'
+                value={cvv}
+                onChange={(e) => setCvv(e.target.value)}
+              />
+              <InputRightElement width='4.5rem'>
+                <Button h='1.75rem' size='sm' onClick={handleClick}>
+                  {show ? "Hide" : "Show"}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+            <InputGroup>
               <Input
                 type='text'
-                name='expirationDate'
-                value={formData.expirationDate}
-                onChange={handleChange}
+                placeholder='Name'
+                value={cardHolderName}
+                onChange={(e) => setcardHolderName(e.target.value)}
               />
-            </FormControl>
-
-            <FormControl>
-              <FormLabel>CVV</FormLabel>
-              <Input
-                type='password'
-                name='cvv'
-                value={formData.cvv}
-                onChange={handleChange}
-              />
-            </FormControl>
-
-            <FormControl>
-              <FormLabel>Name</FormLabel>
-              <Input
-                type='text'
-                name='name'
-                value={formData.name}
-                onChange={handleChange}
-              />
-            </FormControl>
-
-            <Button
-              type='submit'
-              colorScheme='blue'
-              mt={4}
-              onClick={handleSubmit}
-            >
-              Submit
-            </Button>
+            </InputGroup>
+            <InputGroup>
+              <Input id='submit' type='submit' />
+            </InputGroup>
           </form>
-        </Box>
-      </Center>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 };
 
