@@ -9,14 +9,9 @@ const FlightCard = () => {
   const [flightData, setFlightData] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/FlightData")
-      .then((response) => {
-        setFlightData(response.data);
-      })
-      .then((error) => {
-        console.log(error);
-      });
+    axios.get("http://localhost:8080/FlightData").then((response) => {
+      setFlightData(response.data);
+    });
   }, []);
   // console.log(flightData);
 
@@ -35,9 +30,9 @@ const FlightCard = () => {
   return (
     <div id='flightCardsBody'>
       Available Flights
-      {flightData.map((flight) => {
+      {flightData.map((flight, index) => {
         return (
-          <div>
+          <div key={index}>
             <div id='FlightContianer'>
               <div id='Section1'>
                 <div id='SectionLeft'>

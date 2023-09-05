@@ -5,13 +5,14 @@ import {
   Heading,
   Input,
   InputGroup,
-  InputLeftElement,
   InputRightElement,
   useToast,
 } from "@chakra-ui/react";
-import { AiOutlineMail } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import OTPModal from "./OTPModal";
+
 const Payment = () => {
+  const [modal, setModal] = useState(false);
   const [show, setShow] = React.useState(false);
   const [cardNumber, setCardNumber] = useState("");
   const [ExpirationDate, setExpirationDate] = useState("");
@@ -30,7 +31,7 @@ const Payment = () => {
       cvv,
     };
     // console.log(payload);
-    fetch("http://localhost:8000/Payment", {
+    fetch("http://localhost:8000/payment", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(payload),
@@ -47,9 +48,10 @@ const Payment = () => {
             isClosable: true,
             position: "top",
           });
-          setTimeout(() => {
-            navigate("/success");
-          }, 5000);
+          setModal(true);
+          // setTimeout(() => {
+          //   navigate("/success");
+          // }, 5000);
         } else if (res.status === 401) {
           toast({
             title: "Payment Failed",
@@ -83,7 +85,7 @@ const Payment = () => {
           >
             <path
               fill='#0099ff'
-              fill-opacity='1'
+              fillOpacity='1'
               d='M0,64L40,96C80,128,160,192,240,192C320,192,400,128,480,122.7C560,117,640,171,720,181.3C800,192,880,160,960,170.7C1040,181,1120,235,1200,224C1280,213,1360,139,1400,101.3L1440,64L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z'
             ></path>
           </svg>
@@ -135,6 +137,7 @@ const Payment = () => {
               <Input id='submit' type='submit' />
             </InputGroup>
           </form>
+          {modal ? <OTPModal /> : ""}
         </div>
       </div>
     </div>

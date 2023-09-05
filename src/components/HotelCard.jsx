@@ -44,7 +44,7 @@ const HotelCard = () => {
           starIcons.push(<RiStarSFill key={i} />);
         }
         return (
-          <div>
+          <div key={index}>
             <div id='HotelContainer'>
               <div id='LeftHotelBox'>
                 <img src={hotel.HotelImage} alt='HotelImage' />

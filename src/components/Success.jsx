@@ -1,39 +1,94 @@
-import React, { useState, useEffect } from "react";
-import Confetti from "react-confetti"; // a library for confetti animation
-import "../styles/Success.css"; // a file for custom CSS styles
+import React, { useEffect, useState } from "react";
+import OTPModal from "./OTPModal";
+import "../styles/Success.css";
+import vector from "../assets/successimg.jpg";
+import {
+  Button,
+  Container,
+  Flex,
+  Heading,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import Start from "./Start";
+import checkMark from "../assets/check_mark.png";
 
-function Success() {
-  const [loading, setLoading] = useState(true); // a state variable for loading status
-  const [success, setSuccess] = useState(false); // a state variable for success status
+const Success = () => {
+  const [complete, setComplete] = useState(false);
+  const [start, setStart] = useState(false);
 
+  const navigate = useNavigate();
   useEffect(() => {
-    // a hook to run when the component mounts
+    // Simulate loading for 5 seconds
     setTimeout(() => {
-      // a function to simulate a delay of 5 seconds
-      setLoading(false); // set loading to false
-      setSuccess(true); // set success to true
+      setComplete(true);
     }, 5000);
+    setTimeout(() => {
+      setStart(true);
+    }, 8000);
   }, []);
 
+  const handleBookMore = () => {
+    navigate("/destinations");
+  };
+  const handleHome = () => {
+    navigate("/#home");
+  };
+
   return (
-    <div className='container'>
-      {loading && <div className='loader'></div>}{" "}
-      {/* show loader when loading is true */}
-      {success && ( // show success message and confetti when success is true
-        <>
-          <h1 className='message'>Congratulations!! Payment Successful!</h1>
-          <Confetti
-            width={window.innerWidth}
-            height={window.innerHeight}
-            numberOfPieces={1000}
-            recycle={false}
-            run={true}
-            duration={15000}
-          />
-        </>
+    <div className='success-container'>
+      {start ? <Start setStart={setStart} /> : ""}
+      {!complete ? (
+        <div className='spinner'></div> // Display the spinner
+      ) : (
+        <div className='success-box'>
+          <div className='success-LHS'>
+            <Container maxW={"5xl"}>
+              <Stack
+                textAlign={"center"}
+                align={"center"}
+                spacing={{ base: 8, md: 10 }}
+                py={{ base: 20, md: 28 }}
+              >
+                <Heading
+                  fontWeight={600}
+                  fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
+                  // fontSize={"60px"}
+                  lineHeight={"60%"}
+                >
+                  Payment Successful{" "}
+                </Heading>
+                <Text color={"gray.500"} maxW={"3xl"}>
+                  Thank you for choosing Voyawander! Your payment has been
+                  received and Your journey begins here, we can't wait to
+                  explore the world with you.
+                </Text>
+                <Stack spacing={6} direction={"row"}>
+                  <Button
+                    rounded={"full"}
+                    px={6}
+                    colorScheme={"orange"}
+                    bg={"orange.400"}
+                    _hover={{ bg: "orange.500" }}
+                    onClick={handleBookMore}
+                  >
+                    Book More
+                  </Button>
+                  <Button rounded={"full"} px={6} onClick={handleHome}>
+                    Home Page
+                  </Button>
+                </Stack>
+              </Stack>
+            </Container>
+          </div>
+          <div className='success-RHS'>
+            <img src={vector} alt='' />
+          </div>
+        </div>
       )}
     </div>
   );
-}
+};
 
 export default Success;
