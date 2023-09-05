@@ -13,6 +13,8 @@ import { BsPersonSquare } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import signup from "../assets/signup.gif";
+
 const Signup = () => {
   const [show, setShow] = React.useState(false);
   const [name, setName] = useState("");
@@ -61,10 +63,7 @@ const Signup = () => {
       <div id='SignupContainer'>
         <div id='SingupLeftBox'>
           <div id='imgContainer'>
-            <img
-              src='https://user-images.githubusercontent.com/125983433/260936165-9b6a7baf-74c5-44e5-a198-2b419ef40b29.gif'
-              alt=''
-            />
+            <img src={signup} alt='' />
           </div>
         </div>
         <div id='SingupRightBox'>
@@ -81,7 +80,7 @@ const Signup = () => {
           </svg>
           <Heading>Signup</Heading>
           <p id='para'>to explore and book your next trip with us ✌️</p>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} style={{ boxShadow: "none" }}>
             <InputGroup>
               <InputLeftElement pointerEvents='none'>
                 <BsPersonSquare color='gray.300' />

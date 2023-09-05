@@ -25,7 +25,7 @@
   /* border: 2px solid #0099ff; */
   height: 100%;
   width: 50%;
-  background-color: white;
+  background-color: #22c4f9;
   border-radius: 20px 0 0 20px;
 }
 #imgContainer {
@@ -38,7 +38,7 @@
   align-items: center;
   justify-content: space-between;
   /* border-left: 2px solid rgb(198, 196, 196); */
-  border-left: 2px solid #0099ff;
+  border-left: 2px solid #22c4f9;
   /* border-bottom: 2px solid #0099ff; */
   height: 100%;
   width: 50%;

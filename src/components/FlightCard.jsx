@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/FlightCard.css";
-import { Button } from "@chakra-ui/react";
+import { Button, Heading } from "@chakra-ui/react";
 import { ImSpoonKnife } from "react-icons/im";
 import axios from "axios";
 import { isEmpty } from "lodash";
@@ -9,7 +9,7 @@ const FlightCard = () => {
   const [flightData, setFlightData] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get("http://localhost:8080/FlightData").then((response) => {
+    axios.get("http://localhost:8000/flights").then((response) => {
       setFlightData(response.data);
     });
   }, []);
@@ -29,7 +29,7 @@ const FlightCard = () => {
 
   return (
     <div id='flightCardsBody'>
-      Available Flights
+      <Heading>Available Flights...</Heading>
       {flightData.map((flight, index) => {
         return (
           <div key={index}>

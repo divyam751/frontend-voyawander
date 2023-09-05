@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/HotelCard.css";
-import { Button } from "@chakra-ui/react";
+import { Button, Heading } from "@chakra-ui/react";
 import { RiStarSFill } from "react-icons/ri";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { BsCupHotFill } from "react-icons/bs";
@@ -13,7 +13,7 @@ const HotelCard = () => {
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("http://localhost:8080/HotelsData")
+      .get("http://localhost:8000/hotels")
       .then((respose) => {
         setHotelData(respose.data);
       })
@@ -37,7 +37,7 @@ const HotelCard = () => {
 
   return (
     <div id='HotelCardBody'>
-      Available Hotels
+      <Heading>Available Hotels...</Heading>
       {hotelData.map((hotel, index) => {
         const starIcons = [];
         for (let i = 0; i < hotel.HotelStars; i++) {
