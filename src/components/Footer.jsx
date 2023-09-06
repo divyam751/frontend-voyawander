@@ -12,8 +12,8 @@ const Footer = () => {
         <div className='textPart'>
           <Heading>Voyagers</Heading>
           <span>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Consectetur aut assumenda obcaecati alias, natus quae cum possimus
+            Voyawander is the gateway to new horizons, where each step leads to
+            a world of wonder waiting to be explored.
           </span>
         </div>
         <div className='socialMedia'>

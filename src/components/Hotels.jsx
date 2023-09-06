@@ -7,11 +7,11 @@ const Hotels = () => {
     <div id='hotels'>
       <div id='text'>
         <Heading>Great Locations across the World</Heading>
-        <text>
+        <p>
           Travel to the most breathtaking and exotic location across the globe
           with us. From the majestic mountains of Patagonia to the pristine
           beaches of Bali. we'll take you there.
-        </text>
+        </p>
       </div>
       <div>
         <img

@@ -1,9 +1,29 @@
 import { Button, Heading } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Holidays.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Holidays = () => {
+  const [placesData, setPlacesData] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    // Fetch all places initially
+    axios
+      .get(`http://localhost:8000/places`)
+      .then((response) => {
+        setPlacesData(response.data.slice(0, 3));
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+  const handleBook = (place) => {
+    const userData = JSON.stringify(place);
+    localStorage.setItem("currentData", userData);
+    navigate("/hotels");
+  };
   return (
     <div id='holidays'>
       <div id='text'>
@@ -19,57 +39,31 @@ const Holidays = () => {
         </Button>
       </div>
       <div id='holidaysContainer'>
-        <div class='box'>
-          <div className='holidayImage'>
-            <img
-              src='https://static.theceomagazine.net/wp-content/uploads/2021/08/23114340/maldives-travel.jpg'
-              alt='muontain'
-            />
-          </div>
-          <Heading>Magical Maldives</Heading>
-          <h2>7N/8D</h2>
-          <div class='bookingBox'>
-            <div className='priceBox'>
-              <span id='starts'>Starts from</span>
-              <span id='price'>$220 / person</span>
+        {placesData.map((place) => (
+          <div className='box' key={place.placeName}>
+            <div className='holidayImage'>
+              <img src={place.imageURL} alt={place.placeName} />
             </div>
-            <Button id='btn'>Book</Button>
-          </div>
-        </div>
-        <div class='box'>
-          <div className='holidayImage'>
-            <img
-              src='https://blytheandcompany.com/wp-content/uploads/2022/08/pexels-aleksandar-pasaric-2044434-1280x853.jpg'
-              alt=''
-            />
-          </div>
-          <Heading>Dazzling Dubai</Heading>
-          <h2>7N/8D</h2>
-          <div class='bookingBox'>
-            <div className='priceBox'>
-              <span id='starts'>Starts from</span>
-              <span id='price'>$220 / person</span>
+            <div className='content'>
+              <Heading>{place.placeName}</Heading>
+              <h2>{place.tripDuration}</h2>
+              <div className='bookingBox'>
+                <div className='priceBox'>
+                  <span id='starts'>Starts from</span>
+                  <span id='price'>${place.price} / person</span>
+                </div>
+                <Button
+                  id='btn'
+                  onClick={() => {
+                    handleBook(place);
+                  }}
+                >
+                  Book
+                </Button>
+              </div>
             </div>
-            <Button id='btn'>Book</Button>
           </div>
-        </div>
-        <div class='box'>
-          <div className='holidayImage'>
-            <img
-              src='https://www.rajras.in/wp-content/uploads/2016/12/Rajasthan-Camel.jpg'
-              alt=''
-            />
-          </div>
-          <Heading>Royal Rajasthan</Heading>
-          <h2>7N/8D</h2>
-          <div class='bookingBox'>
-            <div className='priceBox'>
-              <span id='starts'>Starts from</span>
-              <span id='price'>$220 / person</span>
-            </div>
-            <Button id='btn'>Book</Button>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

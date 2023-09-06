@@ -5,7 +5,6 @@ import Place from "../components/Places";
 import HotelCard from "../components/HotelCard";
 import FlightCard from "../components/FlightCard";
 import Payment from "../components/Payment";
-import FinalPage from "../components/FinalPage";
 import Signup from "../components/Signup";
 import Login from "../components/Login";
 import Booking from "../components/Booking";
@@ -23,7 +22,6 @@ const AllRoutes = () => {
         <Route path='/booking' element={<Booking />} />
         <Route path='/details' element={<Details />} />
         <Route path='/payment' element={<Payment />} />
-        <Route path='/finalpage' element={<FinalPage />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/success' element={<Success />} />

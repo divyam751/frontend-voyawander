@@ -1,8 +1,63 @@
-import { Button, Heading } from "@chakra-ui/react";
-import React from "react";
+import { Button, Heading, useToast } from "@chakra-ui/react";
+import React, { useState } from "react";
 import "../styles/Contact.css";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Contact = () => {
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [message, setMessage] = useState("");
+  // const toast = useToast();
+  const handleSubmit = () => {
+    if (email === "" || mobile === "" || message === "") {
+      toast.error(`Please fill in all required fields.😕`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+    const payload = {
+      email,
+      mobile,
+      message,
+    };
+    console.log(payload);
+
+    fetch("http://localhost:8000/messages/create", {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+
+        toast.success(`Thanks for contacting us! 😊 We'll be in touch soon!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        setEmail("");
+        setMobile("");
+        setMessage("");
+      })
+
+      .then((err) => console.log(err));
+  };
+
   return (
     <div id='contact'>
       <div className='contactContainer'>
@@ -24,12 +79,42 @@ const Contact = () => {
             </div>
           </div>
           <div className='contactInfo'>
-            <input type='text' placeholder='Email' />
-            <input type='number' placeholder='Mobile' />
+            <input
+              type='email'
+              placeholder='Email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              type='number'
+              placeholder='Mobile'
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
+            />
           </div>
-          <input type='text' placeholder='Message' />
+          <input
+            type='text'
+            placeholder='Message'
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
         </div>
-        <Button id='btn'>Send</Button>
+        <Button id='btn' onClick={handleSubmit}>
+          Send
+        </Button>
+        <ToastContainer
+          position='top-center'
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme='colored'
+        />
       </div>
     </div>
   );
