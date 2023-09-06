@@ -1,18 +1,9 @@
 import React, { useEffect, useState } from "react";
-import OTPModal from "./OTPModal";
 import "../styles/Success.css";
 import vector from "../assets/successimg.jpg";
-import {
-  Button,
-  Container,
-  Flex,
-  Heading,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Button, Container, Heading, Stack, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import Start from "./Start";
-import checkMark from "../assets/check_mark.png";
 
 const Success = () => {
   const [complete, setComplete] = useState(false);

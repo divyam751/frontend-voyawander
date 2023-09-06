@@ -68,3 +68,13 @@
   height: 100%;
   padding-top: 10%;
 }
+
+@media only Screen and (max-width: 1150px) {
+  .success-box {
+    flex-direction: column;
+  }
+  .success-LHS {
+    width: 100%;
+    padding-top: 20%;
+  }
+}

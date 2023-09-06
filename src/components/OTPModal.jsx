@@ -45,6 +45,14 @@ const OTPModal = () => {
         console.log(res);
         localStorage.setItem("OTP", res.OTP);
         if (res.status === 200) {
+          toast({
+            title: "Verification Successful",
+            description: "Thank you for varification!",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+            position: "top",
+          });
           setTimeout(() => {
             navigate("/success");
           }, 2000);
@@ -87,7 +95,7 @@ const OTPModal = () => {
         <ModalContent>
           <ModalHeader>
             <center>
-              Verify Credentials for OTP
+              Verify Credentials for Transaction
               <img src={safe} style={{ width: "200px" }} alt='secure' />
             </center>
           </ModalHeader>

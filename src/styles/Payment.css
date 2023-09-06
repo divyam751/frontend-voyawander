@@ -50,12 +50,15 @@
 #svg2 {
   border-radius: 20px 0;
 }
+.paymentForm {
+  width: 80%;
+  box-shadow: none;
+}
 form {
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-  box-shadow: none;
 }
 #submit {
   background-color: royalblue;
@@ -81,7 +84,7 @@ form {
     width: 100%;
   }
 }
-@media only Screen and (max-width: 550px) {
+@media only Screen and (max-width: 600px) {
   #PaymentContainer {
     flex-direction: column;
     width: 70%;

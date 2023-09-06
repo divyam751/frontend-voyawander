@@ -40,14 +40,14 @@ const Payment = () => {
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
-          toast({
-            title: "Payment Submitted",
-            description: "Please wait for confirmation!",
-            status: "success",
-            duration: 5000,
-            isClosable: true,
-            position: "top",
-          });
+          // toast({
+          //   title: "Payment Submitted",
+          //   description: "Please wait for confirmation!",
+          //   status: "success",
+          //   duration: 5000,
+          //   isClosable: true,
+          //   position: "top",
+          // });
           setModal(true);
           // setTimeout(() => {
           //   navigate("/success");
@@ -94,7 +94,7 @@ const Payment = () => {
             Securely complete your purchase and make a payment with our trusted
             payment gateway ✌️
           </p>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className='paymentForm'>
             <InputGroup>
               <Input
                 type='number'
