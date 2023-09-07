@@ -59,10 +59,17 @@ const Place = () => {
     <div className='mainBody'>
       <Heading>Find Popular Destinations</Heading>
       <Flex justifyContent={"center"}>
-        <InputGroup mt={4} mb={6} w={600} size={"lg"}>
+        <InputGroup
+          mt={4}
+          mb={6}
+          w={600}
+          size={"lg"}
+          backgroundColor={"whiteAlpha.500"}
+          borderRadius={"5px"}
+        >
           <InputLeftElement
             pointerEvents='none'
-            children={<Icon as={FaSearch} color='gray.500' />}
+            children={<Icon as={FaSearch} color='black.500' />}
           />
           <Input
             type='text'

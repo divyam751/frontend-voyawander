@@ -17,6 +17,7 @@ import {
 import { AiOutlineMail } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import safe from "../assets/safe.gif";
+import { ToastContainer, toast } from "react-toastify";
 
 const OTPModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -25,7 +26,7 @@ const OTPModal = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleClick = () => setShow(!show);
-  const toast = useToast();
+  const tooast = useToast();
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -45,19 +46,33 @@ const OTPModal = () => {
         console.log(res);
         localStorage.setItem("OTP", res.OTP);
         if (res.status === 200) {
-          toast({
-            title: "Verification Successful",
-            description: "Thank you for varification!",
-            status: "success",
-            duration: 5000,
-            isClosable: true,
-            position: "top",
+          toast.success(`Verification Successful`, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
           });
           setTimeout(() => {
+            toast.success(`Thank you for varification!`, {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+          }, 1000);
+          setTimeout(() => {
             navigate("/success");
-          }, 2000);
+          }, 5000);
         } else if (res.status === 401) {
-          toast({
+          tooast({
             title: "Login Failed",
             description: "Invalid credentials. Please try again.",
             status: "error",
@@ -69,7 +84,7 @@ const OTPModal = () => {
             navigate("/payment");
           }, 5000);
         } else if (res.status === 404) {
-          toast({
+          tooast({
             title: "User Not Found",
             description: "User not found, please sign up first.",
             status: "error",
@@ -136,6 +151,18 @@ const OTPModal = () => {
             </center>
           </ModalBody>
         </ModalContent>
+        <ToastContainer
+          position='top-right'
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme='colored'
+        />
       </Modal>
     </>
   );
