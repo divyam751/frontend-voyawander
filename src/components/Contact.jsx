@@ -70,12 +70,12 @@ const Contact = () => {
         <div id='contactText'>
           <Heading>Get in touch</Heading>
           <div className='textText'>
-            <div>
-              <text>
+            <div className='desc'>
+              <p>
                 Don't wait, reach out to us now and let us help you plan your
                 next vacation. Our dedicated team is always here to answer your
                 questions and make your travel dreams a reality.
-              </text>
+              </p>
             </div>
           </div>
           <div className='contactInfo'>

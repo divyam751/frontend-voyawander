@@ -33,7 +33,7 @@ const Signup = () => {
       email,
       password,
     };
-    console.log(payload);
+    // console.log(payload);
     fetch("http://localhost:8000/signup", {
       method: "POST",
       headers: { "Content-type": "application/json" },
@@ -41,22 +41,20 @@ const Signup = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         toast({
           title: "Signup Successful",
           description: "You have successfully signed up!",
           status: "success",
-          duration: 5000,
+          duration: 3000,
           isClosable: true,
           position: "top",
         });
 
         setTimeout(() => {
           navigate("/login");
-        }, 5000);
-      })
-
-      .then((err) => console.log(err));
+        }, 3000);
+      });
   };
   return (
     <div id='SignupBody'>
@@ -80,7 +78,10 @@ const Signup = () => {
           </svg>
           <Heading>Signup</Heading>
           <p id='para'>to explore and book your next trip with us ✌️</p>
-          <form onSubmit={handleSubmit} style={{ boxShadow: "none" }}>
+          <form
+            onSubmit={handleSubmit}
+            style={{ boxShadow: "none", width: "90%" }}
+          >
             <InputGroup>
               <InputLeftElement pointerEvents='none'>
                 <BsPersonSquare color='gray.300' />
@@ -123,6 +124,15 @@ const Signup = () => {
             <InputGroup>
               <Input id='submit' type='submit' />
             </InputGroup>
+            <h6
+              onClick={() => navigate("/login")}
+              style={{ cursor: "pointer" }}
+            >
+              Already on Voyawander ?{" "}
+              <b>
+                <u>Sign in</u>
+              </b>
+            </h6>
           </form>
         </div>
       </div>

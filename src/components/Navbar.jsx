@@ -1,29 +1,56 @@
 import { Box, Heading } from "@chakra-ui/react";
 import "../styles/Navbar.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 
 const Navbar = () => {
   const [close, setClose] = useState(true);
-  const [visible, setVisible] = useState("");
+  const [visible, setVisible] = useState("display-none");
   const [height, setHight] = useState("");
+  const [navbarBackground, setNavbarBackground] = useState("transparent");
+  const [navbarShadow, setNavbarShadow] = useState("none");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setNavbarBackground("skyblue");
+        setNavbarShadow("0 2px 4px 0 rgba(0, 0, 0, 0.1)");
+      } else {
+        setNavbarBackground("transparent");
+        setNavbarShadow("none");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const hamburger = () => {
     if (close) {
       setHight("h-nav-resp");
       setVisible("v-class-resp");
+      setNavbarBackground("skyblue");
     } else {
       setHight("");
-      setVisible("");
+      setNavbarBackground("none");
+      setVisible("display-none");
     }
     setClose(!close);
   };
 
   return (
     <Box>
-      <nav className={height}>
-        <Heading id='logo'>Voyawander</Heading>
+      <nav
+        style={{ background: navbarBackground, boxShadow: navbarShadow }}
+        className={height}
+      >
+        <a href='/#home'>
+          <Heading id='logo'>Voyawander</Heading>
+        </a>
         <ul className={visible}>
           <li>
             <a href='/#home'> Home</a>

@@ -30,7 +30,10 @@ const Home = () => {
               experience the world like never before.
             </span>
           </div>
-          <Button id='btn'>Learn More</Button>
+
+          <Button id='btn'>
+            <a href='#about'>Learn More</a>
+          </Button>
         </div>
       </div>
     </div>

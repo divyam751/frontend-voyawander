@@ -17,7 +17,7 @@ const Success = () => {
     }, 5000);
     setTimeout(() => {
       setStart(true);
-    }, 8000);
+    }, 7000);
   }, []);
 
   const handleBookMore = () => {
@@ -31,8 +31,20 @@ const Success = () => {
     <div className='success-container'>
       {start ? <Start setStart={setStart} /> : ""}
       {!complete ? (
-        <div className='spinner'></div> // Display the spinner
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "15px",
+          }}
+        >
+          <div className='spinner'></div>
+          <h1>Please wait your transaction is in progress</h1>
+        </div>
       ) : (
+        // Display the spinner
         <div className='success-box'>
           <div className='success-LHS'>
             <Container maxW={"5xl"}>

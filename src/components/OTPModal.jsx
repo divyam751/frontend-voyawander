@@ -87,11 +87,9 @@ const OTPModal = () => {
   }, []);
   return (
     <>
-      {/* <Button onClick={onOpen}>Open Modal</Button> */}
-
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        {/* <ModalContent bg={"#51CCE0"}> */}
+
         <ModalContent>
           <ModalHeader>
             <center>

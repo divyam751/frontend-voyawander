@@ -8,7 +8,7 @@ import {
   InputRightElement,
   useToast,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+
 import OTPModal from "./OTPModal";
 
 const Payment = () => {
@@ -20,7 +20,7 @@ const Payment = () => {
   const [cardHolderName, setcardHolderName] = useState("");
   const handleClick = () => setShow(!show);
   const toast = useToast();
-  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -30,7 +30,7 @@ const Payment = () => {
       ExpirationDate,
       cvv,
     };
-    // console.log(payload);
+
     fetch("http://localhost:8000/payment", {
       method: "POST",
       headers: { "Content-type": "application/json" },
@@ -40,18 +40,7 @@ const Payment = () => {
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
-          // toast({
-          //   title: "Payment Submitted",
-          //   description: "Please wait for confirmation!",
-          //   status: "success",
-          //   duration: 5000,
-          //   isClosable: true,
-          //   position: "top",
-          // });
           setModal(true);
-          // setTimeout(() => {
-          //   navigate("/success");
-          // }, 5000);
         } else if (res.status === 401) {
           toast({
             title: "Payment Failed",

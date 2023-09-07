@@ -3,7 +3,7 @@
 nav {
   display: flex;
   justify-content: space-between;
-  background-color: transparent;
+  /* background-color: transparent; */
   /* background-color: #e3f5ff; */
   color: black;
   font-family: "Belanosima", sans-serif;
@@ -78,20 +78,25 @@ a {
     display: block;
   }
   #logo {
-    color: rgb(95, 223, 45);
+    color: black;
   }
 
   .h-nav-resp {
     height: 420px;
-    background-color: teal;
+    /* background-color: skyblue; */
     color: white;
+    background-image: linear-gradient(
+      to right,
+      #00adfd 0%,
+      #00c6fe 51%,
+      #00e3fe 100%
+    );
   }
   .v-class-resp {
     opacity: 1;
     pointer-events: auto;
   }
-  /* .v-class-resp:not(.h-nav-resp) {
-    opacity: 0;
-    pointer-events: none;
-  } */
+  .display-none {
+    display: none;
+  }
 }

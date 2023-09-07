@@ -6,6 +6,7 @@
   align-items: center;
   gap: 20px;
   margin-bottom: 20px;
+  padding-top: 80px;
 }
 #text {
   display: flex;
@@ -23,8 +24,9 @@
   width: 60%;
 }
 
-text {
+.desc {
   align-items: center;
+  width: 60%;
 }
 .flightContainer {
   display: flex;

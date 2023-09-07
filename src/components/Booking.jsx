@@ -62,7 +62,7 @@ const Booking = () => {
         console.log("res : ", res);
         if (res.status === 200) {
           toast({
-            title: "Form Submitted Successful",
+            title: "Form Submitted Successfully",
             description: "You have successfully Submit Details!",
             status: "success",
             duration: 5000,

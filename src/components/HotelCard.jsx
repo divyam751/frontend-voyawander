@@ -26,7 +26,7 @@ const HotelCard = () => {
   // console.log(localData.placeName);
   if (!isEmpty(localData.placeName)) {
     let parts = localData.placeName.split(" ");
-    var Country = parts[1];
+    var Country = parts[parts.length - 1];
   }
 
   const handleBookNow = (hotel) => {

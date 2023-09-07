@@ -7,6 +7,7 @@
   align-items: center;
   gap: 40px;
   width: 100%;
+  background-color: rgb(220, 236, 241);
 }
 #FlightContianer {
   display: flex;
@@ -16,6 +17,7 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   height: 200px;
   width: 100%;
+  background-color: white;
 }
 #Section1 {
   display: flex;

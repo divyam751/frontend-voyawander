@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
-
 const Start = ({ setStart }) => {
   const [recycle, setRecycle] = useState(true);
   const { width, height } = useWindowSize;
@@ -25,7 +24,7 @@ const Start = ({ setStart }) => {
       width={width}
       height={height}
       recycle={recycle}
-      numberOfPieces={300}
+      numberOfPieces={200}
       gravity={0.1}
       wind={0}
     />

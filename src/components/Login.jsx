@@ -34,20 +34,20 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         localStorage.setItem("token", res.token);
         if (res.status === 200) {
           toast({
             title: "Login Successful",
             description: "You have successfully Login!",
             status: "success",
-            duration: 5000,
+            duration: 3000,
             isClosable: true,
             position: "top",
           });
           setTimeout(() => {
             navigate("/booking");
-          }, 5000);
+          }, 3000);
         } else if (res.status === 401) {
           toast({
             title: "Login Failed",
@@ -67,9 +67,7 @@ const Login = () => {
             position: "top",
           });
         }
-      })
-
-      .then((err) => console.log(err));
+      });
   };
   return (
     <div id='LoginBody'>
@@ -93,7 +91,10 @@ const Login = () => {
           </svg>
           <Heading>Login</Heading>
           <p id='para'>to explore and book your next trip with us ✌️</p>
-          <form onSubmit={handleSubmit} style={{ boxShadow: "none" }}>
+          <form
+            onSubmit={handleSubmit}
+            style={{ boxShadow: "none", width: "90%" }}
+          >
             <InputGroup>
               <InputLeftElement pointerEvents='none'>
                 <AiOutlineMail color='gray.300' />
@@ -122,6 +123,15 @@ const Login = () => {
             <InputGroup>
               <Input id='submit' type='submit' />
             </InputGroup>
+            <h6
+              onClick={() => navigate("/signup")}
+              style={{ cursor: "pointer" }}
+            >
+              Don't have an account ?{" "}
+              <b>
+                <u>Sign up</u>
+              </b>
+            </h6>
           </form>
           <svg
             id='svg2'

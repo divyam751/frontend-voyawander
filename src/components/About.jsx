@@ -10,11 +10,13 @@ const About = () => {
     <div id='about'>
       <div id='text'>
         <Heading>We offer the Best</Heading>
-        <p>
-          Out team of travel experts is dedicated to ensuring that you have the
-          vacation of a lifetime. Choose us for your next adventure and see why
-          we are best in the business.
-        </p>
+        <div className='desc'>
+          <h2>
+            Out team of travel experts is dedicated to ensuring that you have
+            the vacation of a lifetime. Choose us for your next adventure and
+            see why we are best in the business.
+          </h2>
+        </div>
       </div>
       <div className='aboutContainer'>
         <div id='box'>

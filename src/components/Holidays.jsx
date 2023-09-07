@@ -28,12 +28,14 @@ const Holidays = () => {
     <div id='holidays'>
       <div id='text'>
         <Heading>Find Popular Destinations</Heading>
+        <div className='desc'>
+          <p>
+            Escape the ordinary and explore the extraordinary - with our
+            handpicked selection of destinatations and travel deails. you will
+            be able to create the trip of your dreams.
+          </p>
+        </div>
 
-        <text>
-          Escape the ordinary and explore the extraordinary - with our
-          handpicked selection of destinatations and travel deails. you will be
-          able to create the trip of your dreams.
-        </text>
         <Button id='Explore'>
           <Link to='/destinations'>Explore More </Link>
         </Button>

@@ -6,11 +6,13 @@ const Flights = () => {
     <div id='flights'>
       <div id='text'>
         <Heading>Best and comfortable flights experience</Heading>
-        <text>
-          From the moment you step on board, our dedicated team is committed to
-          providing a smooth and unforgettable experience, ensuring your flight
-          is nothing short of extraordinary.
-        </text>
+        <div className='desc'>
+          <p>
+            From the moment you step on board, our dedicated team is committed
+            to providing a smooth and unforgettable experience, ensuring your
+            flight is nothing short of extraordinary.
+          </p>
+        </div>
       </div>
       <div className='flightContainer'>
         <div className='flightCard'>
