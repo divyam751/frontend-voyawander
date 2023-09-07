@@ -26,8 +26,7 @@ const Login = () => {
       email,
       password,
     };
-    // console.log(payload);
-    fetch("http://localhost:8000/login", {
+    fetch("https://lime-precious-llama.cyclic.app/login", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(payload),

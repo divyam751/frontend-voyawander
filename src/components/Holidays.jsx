@@ -10,7 +10,7 @@ const Holidays = () => {
   useEffect(() => {
     // Fetch all places initially
     axios
-      .get(`http://localhost:8000/places`)
+      .get(`https://lime-precious-llama.cyclic.app/places`)
       .then((response) => {
         setPlacesData(response.data.slice(0, 3));
       })

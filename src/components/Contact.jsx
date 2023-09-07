@@ -1,4 +1,4 @@
-import { Button, Heading, useToast } from "@chakra-ui/react";
+import { Button, Heading } from "@chakra-ui/react";
 import React, { useState } from "react";
 import "../styles/Contact.css";
 
@@ -31,7 +31,7 @@ const Contact = () => {
     };
     console.log(payload);
 
-    fetch("http://localhost:8000/messages/create", {
+    fetch("https://lime-precious-llama.cyclic.app/messages/create", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(payload),

@@ -6,8 +6,9 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  useToast,
 } from "@chakra-ui/react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import OTPModal from "./OTPModal";
 
@@ -19,10 +20,28 @@ const Payment = () => {
   const [cvv, setCvv] = useState("");
   const [cardHolderName, setcardHolderName] = useState("");
   const handleClick = () => setShow(!show);
-  const toast = useToast();
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (
+      cardHolderName === "" ||
+      cardNumber === "" ||
+      ExpirationDate === "" ||
+      cvv === ""
+    ) {
+      toast.error(`Please fill in all required fields.😕`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
 
     const payload = {
       cardHolderName,
@@ -31,7 +50,7 @@ const Payment = () => {
       cvv,
     };
 
-    fetch("http://localhost:8000/payment", {
+    fetch("https://lime-precious-llama.cyclic.app/payment", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(payload),
@@ -42,14 +61,19 @@ const Payment = () => {
         if (res.status === 200) {
           setModal(true);
         } else if (res.status === 401) {
-          toast({
-            title: "Payment Failed",
-            description: "Invalid credentials. Please try again.",
-            status: "error",
-            duration: 5000,
-            isClosable: true,
-            position: "top",
-          });
+          toast.error(
+            `Payment Failed😕,Invalid credentials. Please try again.`,
+            {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            },
+          );
         }
       })
 
@@ -125,6 +149,18 @@ const Payment = () => {
             <InputGroup>
               <Input id='submit' type='submit' />
             </InputGroup>
+            <ToastContainer
+              position='top-center'
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme='colored'
+            />
           </form>
           {modal ? <OTPModal /> : ""}
         </div>

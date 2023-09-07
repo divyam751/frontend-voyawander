@@ -11,7 +11,6 @@ const Success = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    // Simulate loading for 5 seconds
     setTimeout(() => {
       setComplete(true);
     }, 5000);
@@ -44,7 +43,6 @@ const Success = () => {
           <h1>Please wait your transaction is in progress</h1>
         </div>
       ) : (
-        // Display the spinner
         <div className='success-box'>
           <div className='success-LHS'>
             <Container maxW={"5xl"}>
@@ -57,7 +55,6 @@ const Success = () => {
                 <Heading
                   fontWeight={600}
                   fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
-                  // fontSize={"60px"}
                   lineHeight={"60%"}
                 >
                   Payment Successful{" "}

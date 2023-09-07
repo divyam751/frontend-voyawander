@@ -13,7 +13,7 @@ function Details() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/booking")
+      .get("https://lime-precious-llama.cyclic.app/booking")
       .then((res) => setData(res.data))
       .then((error) => console.log(error));
   }, []);

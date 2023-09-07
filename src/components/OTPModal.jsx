@@ -35,8 +35,7 @@ const OTPModal = () => {
       email,
       password,
     };
-    // console.log(payload);
-    fetch("http://localhost:8000/otp", {
+    fetch("https://lime-precious-llama.cyclic.app/otp", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(payload),

@@ -49,7 +49,7 @@ const Booking = () => {
 
     const payload = { ...preload, ...localData };
 
-    fetch("http://localhost:8000/booking/create", {
+    fetch("https://lime-precious-llama.cyclic.app/booking/create", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -62,8 +62,8 @@ const Booking = () => {
         console.log("res : ", res);
         if (res.status === 200) {
           toast({
-            title: "Form Submitted Successfully",
-            description: "You have successfully Submit Details!",
+            title: "Success!",
+            description: "Details Submitted  Successfully!",
             status: "success",
             duration: 5000,
             isClosable: true,

@@ -22,7 +22,7 @@ const Place = () => {
   const debouncedSearch = _debounce((value) => {
     // Fetch data using Axios with search parameter
     axios
-      .get(`http://localhost:8000/places?search=${value}`)
+      .get(`https://lime-precious-llama.cyclic.app/places?search=${value}`)
       .then((response) => {
         setPlacesData(response.data);
       })
@@ -40,7 +40,7 @@ const Place = () => {
   useEffect(() => {
     // Fetch all places initially
     axios
-      .get("http://localhost:8000/places")
+      .get("https://lime-precious-llama.cyclic.app/places")
       .then((response) => {
         setPlacesData(response.data);
       })

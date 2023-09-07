@@ -9,9 +9,11 @@ const FlightCard = () => {
   const [flightData, setFlightData] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get("http://localhost:8000/flights").then((response) => {
-      setFlightData(response.data);
-    });
+    axios
+      .get("https://lime-precious-llama.cyclic.app/flights")
+      .then((response) => {
+        setFlightData(response.data);
+      });
   }, []);
   // console.log(flightData);
 

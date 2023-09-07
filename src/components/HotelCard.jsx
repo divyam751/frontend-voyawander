@@ -13,7 +13,7 @@ const HotelCard = () => {
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("http://localhost:8000/hotels")
+      .get("https://lime-precious-llama.cyclic.app/hotels")
       .then((respose) => {
         setHotelData(respose.data);
       })
@@ -23,7 +23,6 @@ const HotelCard = () => {
   }, []);
 
   const localData = JSON.parse(localStorage.getItem("currentData")) || [];
-  // console.log(localData.placeName);
   if (!isEmpty(localData.placeName)) {
     let parts = localData.placeName.split(" ");
     var Country = parts[parts.length - 1];
