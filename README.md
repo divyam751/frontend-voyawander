@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Voyawander
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to Voyawander, your ultimate travel companion! Voyawander is a full-stack project built to help you plan your dream trips. With a stunning frontend deployed on Vercel and a robust backend deployed on Cyclic, Voyawander brings together React.js, Chakra UI, MongoDB, Express.js, and Node.js to create a seamless travel planning experience. The database is hosted on MongoDB Atlas, ensuring secure and efficient data storage. This project offers a wide range of features, including searching, sorting, debouncing, local storage, authentication, and various pages for planning your trips.
 
-## Available Scripts
+## Table of Contents
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Deployment](#deployment)
+- [Screenshots](#screenshots)
+- [Feedback](#feedback)
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+### Responsive Design
+- **Fully Responsive**: Voyawander is designed to be fully responsive, ensuring that it looks and works seamlessly on a variety of devices, including smartphones, tablets, and desktops. The layout and content adapt dynamically to different screen sizes, providing an optimal user experience regardless of the device used.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This addition emphasizes that the website is accessible and user-friendly on all devices, making it even more appealing to a wider audience.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Searching and Sorting
+- **Search Destinations**: Easily find your dream travel destinations using the search bar.
+- **Sort Results**: Sort destinations by popularity, price, or other criteria to discover new places to visit.
 
-### `npm test`
+### Debouncing
+- **Efficient Debouncing**: The search functionality is debounced to ensure smooth performance, providing real-time results without overloading the server.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Local Storage
+- **Local Storage**: Voyawander uses local storage to save your preferences and booking information, so you can pick up where you left off.
 
-### `npm run build`
+### Authentication
+- **User Authentication**: Secure user accounts allow for personalized experiences, including the ability to save favorite destinations and access booking history.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Pages
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Hero Section**: The homepage features a captivating hero section with breathtaking travel images and inspirational content to spark your wanderlust.
+2. **Login and Signup**: Users can create accounts or log in securely to access personalized features.
+3. **Places**: Explore detailed information about travel destinations, including descriptions, photos, and user reviews.
+4. **Hotels**: Find the perfect accommodation for your trip, complete with photos, reviews, and booking options.
+5. **Flights Bookings**: Book flights to your chosen destinations with ease, complete with price comparisons and schedules.
+6. **Payment Page**: A secure payment page allows users to finalize bookings and make secure transactions.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Tech Stack
 
-### `npm run eject`
+Voyawander is built using the following technologies:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **React.js**: The core frontend library for building dynamic user interfaces.
+- **Chakra UI**: A flexible and accessible design system for creating beautiful user interfaces.
+- **MongoDB**: A NoSQL database for efficient and scalable data storage.
+- **Express.js**: A backend framework for building APIs and handling server-side logic.
+- **Node.js**: A runtime environment for executing server-side JavaScript code.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Deployment
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Frontend**: The frontend is deployed on [Vercel](https://dc-voyawander.vercel.app/) and can be accessed [here](https://dc-voyawander.vercel.app/).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Backend**: The backend is deployed on [Cyclic](https://lime-precious-llama.cyclic.app) and serves as the backbone for the Voyawander application.
 
-## Learn More
+- **Database**: The database is hosted on MongoDB Atlas, ensuring data reliability and security.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To run this project locally or contribute to its development, follow these steps:
 
-### Code Splitting
+1. Clone this repository to your local machine.
+2. Navigate to the project directory.
+3. Install the necessary dependencies using `npm install`.
+4. Start both the frontend and backend servers using `npm start` for each.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Screenshots
+![1](https://github.com/divyam751/frontend-voyawander/assets/125983433/a40fbdd0-7ee6-47be-996c-d79cce2fb438)
+![2](https://github.com/divyam751/frontend-voyawander/assets/125983433/55a10cc7-fba6-467d-9eb0-e79500914ac5)
+![3](https://github.com/divyam751/frontend-voyawander/assets/125983433/b737604c-144e-4382-817b-478f19ff4f0f)
+![4](https://github.com/divyam751/frontend-voyawander/assets/125983433/689bfdc0-7706-431d-ae95-f670461aff6c)
+![5](https://github.com/divyam751/frontend-voyawander/assets/125983433/8229382f-34a6-476a-9fbe-74674df3330c)
+![6](https://github.com/divyam751/frontend-voyawander/assets/125983433/eb9de297-1b36-4b7d-85d7-2328325d9415)
+![7](https://github.com/divyam751/frontend-voyawander/assets/125983433/5a9b131f-f951-43c3-b8d1-6625c1172bf0)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Feedback
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+We're thrilled to have you explore Voyawander and hope it helps you plan your dream vacations. If you have any questions, suggestions, or feedback, please don't hesitate to reach out. Your input is valuable in making Voyawander an even better travel planning platform. Happy travels!
