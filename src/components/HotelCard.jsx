@@ -11,16 +11,17 @@ import { useNavigate } from "react-router-dom";
 const HotelCard = () => {
   const [hotelData, setHotelData] = useState([]);
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
     axios
-      .get("https://lime-precious-llama.cyclic.app/hotels")
+      .get(`${apiUrl}/hotels`)
       .then((respose) => {
         setHotelData(respose.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [apiUrl]);
 
   const localData = JSON.parse(localStorage.getItem("currentData")) || [];
   if (!isEmpty(localData.placeName)) {
@@ -35,7 +36,7 @@ const HotelCard = () => {
   };
 
   return (
-    <div id='HotelCardBody'>
+    <div id="HotelCardBody">
       <Heading>Available Hotels...</Heading>
       {hotelData.map((hotel, index) => {
         const starIcons = [];
@@ -44,56 +45,56 @@ const HotelCard = () => {
         }
         return (
           <div key={index}>
-            <div id='HotelContainer'>
-              <div id='LeftHotelBox'>
-                <img src={hotel.HotelImage} alt='HotelImage' />
+            <div id="HotelContainer">
+              <div id="LeftHotelBox">
+                <img src={hotel.HotelImage} alt="HotelImage" />
               </div>
-              <div id='MiddleHotelBox'>
-                <div id='MiddleHotelBoxTop'>
-                  <div id='HotelRatings'>
-                    <div id='HotelStars'>
-                      <div id='star'>
+              <div id="MiddleHotelBox">
+                <div id="MiddleHotelBoxTop">
+                  <div id="HotelRatings">
+                    <div id="HotelStars">
+                      <div id="star">
                         {starIcons.map((icon, index) => (
                           <span key={index}>{icon}</span>
                         ))}
                       </div>
-                      <Button colorScheme='black' variant='outline' size='sm'>
+                      <Button colorScheme="black" variant="outline" size="sm">
                         RESORT
                       </Button>
                     </div>
-                    <div id='HotelRatingTag'>
-                      <Button colorScheme='whatsapp' size='sm'>
+                    <div id="HotelRatingTag">
+                      <Button colorScheme="whatsapp" size="sm">
                         {hotel.HotelRating}
                       </Button>
                       <p>{hotel.ReviewRating} Ratings</p>
                     </div>
                   </div>
-                  <div id='HotelName'>
+                  <div id="HotelName">
                     <p>{hotel.HotelName}</p>
                   </div>
-                  <div id='HotelLocation'>
+                  <div id="HotelLocation">
                     <FaMapMarkerAlt />
                     <p>{Country}</p>
                   </div>
                   <p>{hotel.HotelLocation}</p>
                 </div>
-                <div id='MiddleHotelBoxBtm'>
-                  <div id='HotelMiddleBtmSection'>
+                <div id="MiddleHotelBoxBtm">
+                  <div id="HotelMiddleBtmSection">
                     <p>{hotel.HotelDescription}</p>
                   </div>
                 </div>
               </div>
 
-              <div id='RightHotelBox'>
-                <p id='HotelPrice'>$ {hotel.HotelPrice}</p>
+              <div id="RightHotelBox">
+                <p id="HotelPrice">$ {hotel.HotelPrice}</p>
                 <p>+ $ {hotel.HotelTax}TAXES & FEES</p>
                 <p>1 room per night</p>
-                <div id='BreakFastSection'>
+                <div id="BreakFastSection">
                   <BsCupHotFill />
                   <p>INCL OF FREE BREAKFAST</p>
                 </div>
                 <Button
-                  colorScheme='whatsapp'
+                  colorScheme="whatsapp"
                   onClick={() => {
                     handleBookNow(hotel);
                   }}

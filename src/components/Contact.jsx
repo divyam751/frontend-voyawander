@@ -30,8 +30,9 @@ const Contact = () => {
       message,
     };
     console.log(payload);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
-    fetch("https://lime-precious-llama.cyclic.app/messages/create", {
+    fetch(`${apiUrl}/messages/create`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(payload),
@@ -59,18 +60,18 @@ const Contact = () => {
   };
 
   return (
-    <div id='contact'>
-      <div className='contactContainer'>
+    <div id="contact">
+      <div className="contactContainer">
         <img
-          id='contactImg'
-          src='https://www.whitespidermedia.com/_nuxt/img/196e79f.jpg'
-          alt=''
+          id="contactImg"
+          src="https://www.whitespidermedia.com/_nuxt/img/196e79f.jpg"
+          alt=""
         />
 
-        <div id='contactText'>
+        <div id="contactText">
           <Heading>Get in touch</Heading>
-          <div className='textText'>
-            <div className='desc'>
+          <div className="textText">
+            <div className="desc">
               <p>
                 Don't wait, reach out to us now and let us help you plan your
                 next vacation. Our dedicated team is always here to answer your
@@ -78,33 +79,33 @@ const Contact = () => {
               </p>
             </div>
           </div>
-          <div className='contactInfo'>
+          <div className="contactInfo">
             <input
-              type='email'
-              placeholder='Email'
+              type="email"
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
             <input
-              type='number'
-              placeholder='Mobile'
+              type="number"
+              placeholder="Mobile"
               value={mobile}
               onChange={(e) => setMobile(e.target.value)}
             />
           </div>
           <input
-            type='text'
-            placeholder='Message'
+            type="text"
+            placeholder="Message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
         </div>
-        <Button id='btn' onClick={handleSubmit}>
+        <Button id="btn" onClick={handleSubmit}>
           Send
         </Button>
         <ToastContainer
-          position='top-center'
+          position="top-center"
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}
@@ -113,7 +114,7 @@ const Contact = () => {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          theme='colored'
+          theme="colored"
         />
       </div>
     </div>

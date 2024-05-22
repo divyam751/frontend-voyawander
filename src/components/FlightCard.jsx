@@ -8,13 +8,12 @@ import { useNavigate } from "react-router-dom";
 const FlightCard = () => {
   const [flightData, setFlightData] = useState([]);
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
-    axios
-      .get("https://lime-precious-llama.cyclic.app/flights")
-      .then((response) => {
-        setFlightData(response.data);
-      });
-  }, []);
+    axios.get(`${apiUrl}/flights`).then((response) => {
+      setFlightData(response.data);
+    });
+  }, [apiUrl]);
   // console.log(flightData);
 
   const localData = JSON.parse(localStorage.getItem("currentData")) || [];
@@ -30,15 +29,15 @@ const FlightCard = () => {
   };
 
   return (
-    <div id='flightCardsBody'>
+    <div id="flightCardsBody">
       <Heading>Available Flights...</Heading>
       {flightData.map((flight, index) => {
         return (
           <div key={index}>
-            <div id='FlightContianer'>
-              <div id='Section1'>
-                <div id='SectionLeft'>
-                  <Button id='Deal' colorScheme='whatsapp'>
+            <div id="FlightContianer">
+              <div id="Section1">
+                <div id="SectionLeft">
+                  <Button id="Deal" colorScheme="whatsapp">
                     DEAL
                   </Button>
                   <p>
@@ -48,39 +47,39 @@ const FlightCard = () => {
                   </p>
                 </div>
               </div>
-              <div id='Section2'>
-                <div id='Devider1'>
-                  <div id='FlightDetails'>
-                    <div id='FlightLogo'>
-                      <img src={flight.FlightLogo} alt='logo' />
+              <div id="Section2">
+                <div id="Devider1">
+                  <div id="FlightDetails">
+                    <div id="FlightLogo">
+                      <img src={flight.FlightLogo} alt="logo" />
                     </div>
-                    <div id='FlightName'>
+                    <div id="FlightName">
                       <p>{flight.FlightName}</p>
                       <p>{flight.FlightNumber}</p>
                     </div>
                   </div>
-                  <div id='TimeSection'>
-                    <div id='TimeBox'>
+                  <div id="TimeSection">
+                    <div id="TimeBox">
                       <p>{flight.DepartureTime}</p>
                       <p>{flight.DepartureDestination}</p>
                     </div>
-                    <div id='Line'></div>
-                    <div id='TimeBox'>
+                    <div id="Line"></div>
+                    <div id="TimeBox">
                       <p>{flight.ArrivalTime}</p>
                       <p>{Country}</p>
                     </div>
                   </div>
                 </div>
-                <div id='Devider2'>
-                  <div id='TotalTime'>
+                <div id="Devider2">
+                  <div id="TotalTime">
                     <p>{flight.TotalTime}</p>
                     <p>Non Stop</p>
                   </div>
-                  <div id='FlightPrice'>
+                  <div id="FlightPrice">
                     <p>$ {flight.FlightPrice}</p>
                     <Button
-                      colorScheme='red'
-                      variant='outline'
+                      colorScheme="red"
+                      variant="outline"
                       onClick={() => {
                         handleBookNow(flight);
                       }}
@@ -90,18 +89,18 @@ const FlightCard = () => {
                   </div>
                 </div>
               </div>
-              <div id='Section3'>
+              <div id="Section3">
                 <div>
                   <select>
                     <option>Flight Details</option>
                   </select>
                 </div>
-                <div id='FlightFooter'>
-                  <div id='MealSection'>
+                <div id="FlightFooter">
+                  <div id="MealSection">
                     <ImSpoonKnife />
                     <p>Free Meal</p>
                   </div>
-                  <div id='Emissions'>
+                  <div id="Emissions">
                     <p>Emissions: 142 Kg CO2</p>
                   </div>
                 </div>

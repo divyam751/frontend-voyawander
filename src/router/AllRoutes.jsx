@@ -15,16 +15,16 @@ const AllRoutes = () => {
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Hero />} />
-        <Route path='/destinations' element={<Place />} />
-        <Route path='/hotels' element={<HotelCard />} />
-        <Route path='/flights' element={<FlightCard />} />
-        <Route path='/booking' element={<Booking />} />
-        <Route path='/details' element={<Details />} />
-        <Route path='/payment' element={<Payment />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/success' element={<Success />} />
+        <Route path="/" element={<Hero />} />
+        <Route path="/destinations" element={<Place />} />
+        <Route path="/hotels" element={<HotelCard />} />
+        <Route path="/flights" element={<FlightCard />} />
+        <Route path="/booking" element={<Booking />} />
+        <Route path="/details" element={<Details />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/success" element={<Success />} />
       </Routes>
     </div>
   );

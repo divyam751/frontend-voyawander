@@ -35,7 +35,8 @@ const OTPModal = () => {
       email,
       password,
     };
-    fetch("https://lime-precious-llama.cyclic.app/otp", {
+    const apiUrl = process.env.REACT_APP_API_URL;
+    fetch(`${apiUrl}/otp`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(payload),
@@ -108,7 +109,7 @@ const OTPModal = () => {
           <ModalHeader>
             <center>
               Verify Credentials for Transaction
-              <img src={safe} style={{ width: "200px" }} alt='secure' />
+              <img src={safe} style={{ width: "200px" }} alt="secure" />
             </center>
           </ModalHeader>
           <ModalCloseButton />
@@ -119,39 +120,39 @@ const OTPModal = () => {
                 style={{ boxShadow: "none", width: "100%" }}
               >
                 <InputGroup>
-                  <InputLeftElement pointerEvents='none'>
-                    <AiOutlineMail color='gray.300' />
+                  <InputLeftElement pointerEvents="none">
+                    <AiOutlineMail color="gray.300" />
                   </InputLeftElement>
                   <Input
-                    type='email'
-                    placeholder='Email'
+                    type="email"
+                    placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </InputGroup>
-                <InputGroup size='md'>
+                <InputGroup size="md">
                   <Input
-                    pr='4.5rem'
+                    pr="4.5rem"
                     type={show ? "text" : "password"}
-                    placeholder='Enter password'
+                    placeholder="Enter password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <InputRightElement width='4.5rem'>
-                    <Button h='1.75rem' size='sm' onClick={handleClick}>
+                  <InputRightElement width="4.5rem">
+                    <Button h="1.75rem" size="sm" onClick={handleClick}>
                       {show ? "Hide" : "Show"}
                     </Button>
                   </InputRightElement>
                 </InputGroup>
                 <InputGroup>
-                  <Input id='submit' type='submit' />
+                  <Input id="submit" type="submit" />
                 </InputGroup>
               </form>
             </center>
           </ModalBody>
         </ModalContent>
         <ToastContainer
-          position='top-right'
+          position="top-right"
           autoClose={3000}
           hideProgressBar={false}
           newestOnTop={false}
@@ -160,7 +161,7 @@ const OTPModal = () => {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          theme='colored'
+          theme="colored"
         />
       </Modal>
     </>

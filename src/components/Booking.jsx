@@ -48,8 +48,9 @@ const Booking = () => {
     };
 
     const payload = { ...preload, ...localData };
+    const apiUrl = process.env.REACT_APP_API_URL;
 
-    fetch("https://lime-precious-llama.cyclic.app/booking/create", {
+    fetch(`${apiUrl}/booking/create`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -87,25 +88,25 @@ const Booking = () => {
       .then((err) => console.log(err));
   };
   return (
-    <div id='BookingBody'>
-      <div id='BookingContainer'>
+    <div id="BookingBody">
+      <div id="BookingContainer">
         <form onSubmit={handleSubmit}>
           <svg
-            id='fromsvg'
-            xmlns='http://www.w3.org/2000/svg'
-            viewBox='0 0 1440 320'
+            id="fromsvg"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
           >
             <path
-              fill='#0099ff'
-              fillOpacity='1'
-              d='M0,320L21.8,293.3C43.6,267,87,213,131,202.7C174.5,192,218,224,262,213.3C305.5,203,349,149,393,117.3C436.4,85,480,75,524,106.7C567.3,139,611,213,655,229.3C698.2,245,742,203,785,176C829.1,149,873,139,916,160C960,181,1004,235,1047,245.3C1090.9,256,1135,224,1178,208C1221.8,192,1265,192,1309,202.7C1352.7,213,1396,235,1418,245.3L1440,256L1440,0L1418.2,0C1396.4,0,1353,0,1309,0C1265.5,0,1222,0,1178,0C1134.5,0,1091,0,1047,0C1003.6,0,960,0,916,0C872.7,0,829,0,785,0C741.8,0,698,0,655,0C610.9,0,567,0,524,0C480,0,436,0,393,0C349.1,0,305,0,262,0C218.2,0,175,0,131,0C87.3,0,44,0,22,0L0,0Z'
+              fill="#0099ff"
+              fillOpacity="1"
+              d="M0,320L21.8,293.3C43.6,267,87,213,131,202.7C174.5,192,218,224,262,213.3C305.5,203,349,149,393,117.3C436.4,85,480,75,524,106.7C567.3,139,611,213,655,229.3C698.2,245,742,203,785,176C829.1,149,873,139,916,160C960,181,1004,235,1047,245.3C1090.9,256,1135,224,1178,208C1221.8,192,1265,192,1309,202.7C1352.7,213,1396,235,1418,245.3L1440,256L1440,0L1418.2,0C1396.4,0,1353,0,1309,0C1265.5,0,1222,0,1178,0C1134.5,0,1091,0,1047,0C1003.6,0,960,0,916,0C872.7,0,829,0,785,0C741.8,0,698,0,655,0C610.9,0,567,0,524,0C480,0,436,0,393,0C349.1,0,305,0,262,0C218.2,0,175,0,131,0C87.3,0,44,0,22,0L0,0Z"
             ></path>
           </svg>
-          <Heading id='bookingForm'>Booking Form</Heading>
+          <Heading id="bookingForm">Booking Form</Heading>
           <InputGroup>
             <Input
-              type='text'
-              placeholder='Full Name'
+              type="text"
+              placeholder="Full Name"
               value={bookingName}
               onChange={(e) => setBookingName(e.target.value)}
               required
@@ -113,8 +114,8 @@ const Booking = () => {
           </InputGroup>
           <InputGroup>
             <Input
-              type='number'
-              placeholder='Age'
+              type="number"
+              placeholder="Age"
               value={bookingAge}
               onChange={(e) => setBookingAge(e.target.value)}
               required
@@ -122,26 +123,26 @@ const Booking = () => {
           </InputGroup>
           <InputGroup>
             <Select
-              placeholder='Select Gender'
+              placeholder="Select Gender"
               value={bookingGender}
               onChange={(e) => setBookingGender(e.target.value)}
             >
-              <option value='Male'>Male</option>
-              <option value='Female'>Female</option>
-              <option value='Other'>Other</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
             </Select>
           </InputGroup>
           <InputGroup>
             <Textarea
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              placeholder='Enter your address'
+              placeholder="Enter your address"
             />
           </InputGroup>
           <InputGroup>
             <Input
-              type='number'
-              placeholder='AdharCard Number'
+              type="number"
+              placeholder="AdharCard Number"
               value={adharNumber}
               onChange={(e) => setAdharNumber(e.target.value)}
               required
@@ -149,18 +150,18 @@ const Booking = () => {
           </InputGroup>
           <InputGroup>
             <FormLabel>Number of Tickets</FormLabel>
-            <Flex align='center'>
-              <Button size='sm' onClick={handleDecrement} mr={2}>
+            <Flex align="center">
+              <Button size="sm" onClick={handleDecrement} mr={2}>
                 -
               </Button>
               <Box>{numTickets}</Box>
-              <Button size='sm' onClick={handleIncrement} ml={2}>
+              <Button size="sm" onClick={handleIncrement} ml={2}>
                 +
               </Button>
             </Flex>
           </InputGroup>
           <InputGroup>
-            <Input id='submit' type='submit' />
+            <Input id="submit" type="submit" />
           </InputGroup>
         </form>
       </div>

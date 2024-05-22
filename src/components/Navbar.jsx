@@ -48,30 +48,30 @@ const Navbar = () => {
         style={{ background: navbarBackground, boxShadow: navbarShadow }}
         className={height}
       >
-        <a href='/#home'>
-          <Heading id='logo'>Voyawander</Heading>
+        <a href="/#home">
+          <Heading id="logo">Voyawander</Heading>
         </a>
         <ul className={visible}>
           <li>
-            <a href='/#home'> Home</a>
+            <a href="/#home"> Home</a>
           </li>
           <li>
-            <a href='/#about'>About Us</a>
+            <a href="/#about">About Us</a>
           </li>
           <li>
-            <a href='/#hotels'>Hotels</a>
+            <a href="/#hotels">Hotels</a>
           </li>
           <li>
-            <a href='/#flights'>Flights</a>
+            <a href="/#flights">Flights</a>
           </li>
           <li>
-            <a href='/#holidays'>Holidays</a>
+            <a href="/#holidays">Holidays</a>
           </li>
           <li>
-            <a href='/#contact'>Contact Us</a>
+            <a href="/#contact">Contact Us</a>
           </li>
         </ul>
-        <div className='burger' onClick={hamburger}>
+        <div className="burger" onClick={hamburger}>
           {close ? <GiHamburgerMenu /> : <RxCross2 />}
         </div>
       </nav>

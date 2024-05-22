@@ -18,11 +18,14 @@ const Place = () => {
   const [placesData, setPlacesData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const navigate = useNavigate();
   const debouncedSearch = _debounce((value) => {
     // Fetch data using Axios with search parameter
+
     axios
-      .get(`https://lime-precious-llama.cyclic.app/places?search=${value}`)
+      .get(`${apiUrl}/places?search=${value}`)
       .then((response) => {
         setPlacesData(response.data);
       })
@@ -40,14 +43,14 @@ const Place = () => {
   useEffect(() => {
     // Fetch all places initially
     axios
-      .get("https://lime-precious-llama.cyclic.app/places")
+      .get(`${apiUrl}/places`)
       .then((response) => {
         setPlacesData(response.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []);
+  }, [apiUrl]);
 
   const handleBook = (place) => {
     const userData = JSON.stringify(place);
@@ -56,7 +59,7 @@ const Place = () => {
   };
 
   return (
-    <div className='mainBody'>
+    <div className="mainBody">
       <Heading>Find Popular Destinations</Heading>
       <Flex justifyContent={"center"}>
         <InputGroup
@@ -68,33 +71,33 @@ const Place = () => {
           borderRadius={"5px"}
         >
           <InputLeftElement
-            pointerEvents='none'
-            children={<Icon as={FaSearch} color='black.500' />}
+            pointerEvents="none"
+            children={<Icon as={FaSearch} color="black.500" />}
           />
           <Input
-            type='text'
-            placeholder='Search places...'
+            type="text"
+            placeholder="Search places..."
             onChange={handleSearchInputChange}
             value={searchInput}
           />
         </InputGroup>
       </Flex>
-      <div id='holidaysContainer'>
+      <div id="holidaysContainer">
         {placesData.map((place) => (
-          <div className='box' key={place.placeName}>
-            <div className='holidayImage'>
+          <div className="box" key={place.placeName}>
+            <div className="holidayImage">
               <img src={place.imageURL} alt={place.placeName} />
             </div>
-            <div className='content'>
+            <div className="content">
               <Heading>{place.placeName}</Heading>
               <h2>{place.tripDuration}</h2>
-              <div className='bookingBox'>
-                <div className='priceBox'>
-                  <span id='starts'>Starts from</span>
-                  <span id='price'>${place.price} / person</span>
+              <div className="bookingBox">
+                <div className="priceBox">
+                  <span id="starts">Starts from</span>
+                  <span id="price">${place.price} / person</span>
                 </div>
                 <Button
-                  id='btn'
+                  id="btn"
                   onClick={() => {
                     handleBook(place);
                   }}

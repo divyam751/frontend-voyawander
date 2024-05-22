@@ -11,12 +11,13 @@ function Details() {
     navigate("/payment");
   };
 
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
     axios
-      .get("https://lime-precious-llama.cyclic.app/booking")
+      .get(`${apiUrl}/booking`)
       .then((res) => setData(res.data))
       .then((error) => console.log(error));
-  }, []);
+  }, [apiUrl]);
 
   let n = data.length;
   let len = Number.parseInt(n);
@@ -26,9 +27,9 @@ function Details() {
 
   const bookingData = data[len - 1];
   return (
-    <div id='DetailsBody'>
-      <div id='DetailsContainer'>
-        <p id='Headings'>Passenger Details</p>
+    <div id="DetailsBody">
+      <div id="DetailsContainer">
+        <p id="Headings">Passenger Details</p>
         <table>
           <tr>
             <td>Name</td>
@@ -48,7 +49,7 @@ function Details() {
           </tr>
         </table>
         {/* Holiday */}
-        <p id='Headings'>Holiday Details</p>
+        <p id="Headings">Holiday Details</p>
         <table>
           <tr>
             <td>Place</td>
@@ -72,7 +73,7 @@ function Details() {
           </tr>
         </table>
         {/* Holiday */}
-        <p id='Headings'>Payment Details</p>
+        <p id="Headings">Payment Details</p>
         <table>
           <tr>
             <td>Trip Amount</td>
@@ -91,7 +92,7 @@ function Details() {
             <td>{bookingData.numTickets} </td>
           </tr>
         </table>
-        <p id='Headings'>Payment Details</p>
+        <p id="Headings">Payment Details</p>
         <table>
           <tr>
             <td>Total Amount</td>
@@ -104,7 +105,7 @@ function Details() {
             </td>
           </tr>
         </table>
-        <Button id='pay' colorScheme='whatsapp' onClick={handleClick}>
+        <Button id="pay" colorScheme="whatsapp" onClick={handleClick}>
           Proceed To Pay
         </Button>
       </div>

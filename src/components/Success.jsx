@@ -27,7 +27,7 @@ const Success = () => {
   };
 
   return (
-    <div className='success-container'>
+    <div className="success-container">
       {start ? <Start setStart={setStart} /> : ""}
       {!complete ? (
         <div
@@ -39,12 +39,12 @@ const Success = () => {
             gap: "15px",
           }}
         >
-          <div className='spinner'></div>
+          <div className="spinner"></div>
           <h1>Please wait your transaction is in progress</h1>
         </div>
       ) : (
-        <div className='success-box'>
-          <div className='success-LHS'>
+        <div className="success-box">
+          <div className="success-LHS">
             <Container maxW={"5xl"}>
               <Stack
                 textAlign={"center"}
@@ -82,8 +82,8 @@ const Success = () => {
               </Stack>
             </Container>
           </div>
-          <div className='success-RHS'>
-            <img src={vector} alt='' />
+          <div className="success-RHS">
+            <img src={vector} alt="" />
           </div>
         </div>
       )}
