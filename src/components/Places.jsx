@@ -13,9 +13,11 @@ import {
 import { FaSearch } from "react-icons/fa";
 import "../styles/Places.css";
 import { useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 
 const Place = () => {
   const [placesData, setPlacesData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState("");
 
   const apiUrl = process.env.REACT_APP_API_URL;
@@ -42,6 +44,7 @@ const Place = () => {
 
   useEffect(() => {
     // Fetch all places initially
+    setLoading(true);
     axios
       .get(`${apiUrl}/places`)
       .then((response) => {
@@ -49,7 +52,8 @@ const Place = () => {
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-      });
+      })
+      .finally(setLoading(false));
   }, [apiUrl]);
 
   const handleBook = (place) => {
@@ -83,31 +87,35 @@ const Place = () => {
         </InputGroup>
       </Flex>
       <div id="holidaysContainer">
-        {placesData.map((place) => (
-          <div className="box" key={place.placeName}>
-            <div className="holidayImage">
-              <img src={place.imageURL} alt={place.placeName} />
-            </div>
-            <div className="content">
-              <Heading>{place.placeName}</Heading>
-              <h2>{place.tripDuration}</h2>
-              <div className="bookingBox">
-                <div className="priceBox">
-                  <span id="starts">Starts from</span>
-                  <span id="price">${place.price} / person</span>
+        {loading ? (
+          <Loader />
+        ) : (
+          placesData.map((place) => (
+            <div className="box" key={place.placeName}>
+              <div className="holidayImage">
+                <img src={place.imageURL} alt={place.placeName} />
+              </div>
+              <div className="content">
+                <Heading>{place.placeName}</Heading>
+                <h2>{place.tripDuration}</h2>
+                <div className="bookingBox">
+                  <div className="priceBox">
+                    <span id="starts">Starts from</span>
+                    <span id="price">${place.price} / person</span>
+                  </div>
+                  <Button
+                    id="btn"
+                    onClick={() => {
+                      handleBook(place);
+                    }}
+                  >
+                    Book
+                  </Button>
                 </div>
-                <Button
-                  id="btn"
-                  onClick={() => {
-                    handleBook(place);
-                  }}
-                >
-                  Book
-                </Button>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 .mainBody {
   padding-top: 70px;
   background-color: rgb(220, 236, 241);
+  min-height: 100vh;
 }
 #holidays {
   background-size: cover;

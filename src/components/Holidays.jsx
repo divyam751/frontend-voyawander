@@ -3,22 +3,29 @@ import React, { useEffect, useState } from "react";
 import "../styles/Holidays.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Loader from "./Loader";
 
 const Holidays = () => {
   const [placesData, setPlacesData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     // Fetch all places initially
-    axios
-      .get(`${apiUrl}/places`)
-      .then((response) => {
-        setPlacesData(response.data.slice(0, 3));
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    const fetchPlaceData = () => {
+      setLoading(true);
+      axios
+        .get(`${apiUrl}/places`)
+        .then((response) => {
+          setPlacesData(response.data.slice(0, 3));
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        })
+        .finally(setLoading(false));
+    };
+    fetchPlaceData();
   }, [apiUrl]);
 
   const handleBook = (place) => {
@@ -43,31 +50,35 @@ const Holidays = () => {
         </Button>
       </div>
       <div id="holidaysContainer">
-        {placesData.map((place) => (
-          <div className="box" key={place.placeName}>
-            <div className="holidayImage">
-              <img src={place.imageURL} alt={place.placeName} />
-            </div>
-            <div className="content">
-              <Heading>{place.placeName}</Heading>
-              <h2>{place.tripDuration}</h2>
-              <div className="bookingBox">
-                <div className="priceBox">
-                  <span id="starts">Starts from</span>
-                  <span id="price">${place.price} / person</span>
+        {loading ? (
+          <Loader />
+        ) : (
+          placesData.map((place) => (
+            <div className="box" key={place.placeName}>
+              <div className="holidayImage">
+                <img src={place.imageURL} alt={place.placeName} />
+              </div>
+              <div className="content">
+                <Heading>{place.placeName}</Heading>
+                <h2>{place.tripDuration}</h2>
+                <div className="bookingBox">
+                  <div className="priceBox">
+                    <span id="starts">Starts from</span>
+                    <span id="price">${place.price} / person</span>
+                  </div>
+                  <Button
+                    id="btn"
+                    onClick={() => {
+                      handleBook(place);
+                    }}
+                  >
+                    Book
+                  </Button>
                 </div>
-                <Button
-                  id="btn"
-                  onClick={() => {
-                    handleBook(place);
-                  }}
-                >
-                  Book
-                </Button>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
