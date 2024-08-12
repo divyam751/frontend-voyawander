@@ -4,6 +4,7 @@ import "../styles/Contact.css";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import mountain from "../assets/mountain.jpg";
 
 const Contact = () => {
   const [email, setEmail] = useState("");
@@ -64,7 +65,8 @@ const Contact = () => {
       <div className="contactContainer">
         <img
           id="contactImg"
-          src="https://www.whitespidermedia.com/_nuxt/img/196e79f.jpg"
+          src={mountain}
+          // src="https://www.whitespidermedia.com/_nuxt/img/196e79f.jpg"
           alt=""
         />
 

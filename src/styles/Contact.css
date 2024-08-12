@@ -11,6 +11,7 @@
 }
 #contactImg {
   height: 400px;
+  opacity: 0.2;
 }
 #contactText {
   display: flex;
